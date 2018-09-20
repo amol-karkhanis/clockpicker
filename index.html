@@ -218,6 +218,12 @@ var input = $('.clockpicker-with-callbacks').clockpicker({
 		afterHourSelect: function() {
 			console.log("after hour selected");
 		},
+		afterMinuteSelect: function() {
+			console.log("after minute selected");
+		},
+		afterAmPmSelect: function() {
+			console.log("after AM/PM selected");
+		},
 		beforeDone: function() {
 			console.log("before done");
 		},
@@ -257,6 +263,24 @@ $('.clockpicker').clockpicker({
 });
 &lt;/script&gt;</code></pre>
 	</div>
+	<div class="form-group">
+		<h4>Twelve hour:</h4>
+		<div class="input-group clockpicker" data-donetext="Done" data-twelvehour="true">
+			<input type="text" class="form-control" value="18:00">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>
+		<pre class="hljs-pre"><code class="html">&lt;div class="input-group clockpicker" data-donetext="Done" data-twelvehour="true"&gt;
+	&lt;input type="text" class="form-control" value="18:00"&gt;
+	&lt;span class="input-group-addon"&gt;
+		&lt;span class="glyphicon glyphicon-time"&gt;&lt;/span&gt;
+	&lt;/span&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$('.clockpicker').clockpicker();
+&lt;/script&gt;</code></pre>
+	</div>
 
 	<h3>Options</h3>
 	<table class="table table-bordered table-striped">
@@ -292,6 +316,10 @@ $('.clockpicker').clockpicker({
 	<td>auto close when minute is selected</td>
 	</tr>
 	<tr>
+	<td>twelvehour</td>
+	<td>false</td>
+	<td>enables twelve hour mode with AM & PM buttons</td>
+	</tr>
 	<td>vibrate</td>
 	<td>true</td>
 	<td>vibrate the device when dragging clock hand</td>
@@ -339,6 +367,16 @@ $('.clockpicker').clockpicker({
 		<td>afterHourSelect</td>
 		<td></td>
 		<td>callback function triggered after user makes an hour selection</td>
+	</tr>
+	<tr>
+		<td>afterMinuteSelect</td>
+		<td></td>
+		<td>callback function triggered after user makes a minute selection</td>
+	</tr>
+	<tr>
+		<td>afterAmPmSelect</td>
+		<td></td>
+		<td>callback function triggered after user makes an AM/PM selection</td>
 	</tr>
 	<tr>
 		<td>beforeDone</td>
@@ -450,6 +488,12 @@ $('.clockpicker-with-callbacks').clockpicker({
 		},
 		afterHourSelect: function() {
 			console.log("after hour selected");
+		},
+		afterMinuteSelect: function() {
+			console.log("after minute selected");
+		},
+		afterAmPmSelect: function() {
+			console.log("after AM/PM selected");
 		},
 		beforeDone: function() {
 			console.log("before done");

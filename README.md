@@ -86,6 +86,8 @@ if (something) {
 | afterHide | | callback function triggered after popup is hidden Note:will be triggered between a beforeDone and afterDone |
 | beforeHourSelect | | callback function triggered before user makes an hour selection |
 | afterHourSelect | | callback function triggered after user makes an hour selection |
+| afterMinuteSelect | | callback function triggered after user makes a minute selection |
+| afterAmPmSelect | | callback function triggered after user makes a AM/PM selection |
 | beforeDone | | callback function triggered before time is written to input |
 | afterDone | | callback function triggered after time is written to input |
 

@@ -203,51 +203,93 @@ $('#single-input').clockpicker({
 				</span>
 			</div>
 		</div>
-		<pre class="hljs-pre">
-			<code class="html">
-				&lt;input class="form-control" id="single-input" value="" placeholder="Now"&gt;
-				&lt;script type="text/javascript"&gt;
-				var input = $('.clockpicker-with-callbacks').clockpicker({
-					donetext: 'Done',
-						init: function() { 
-							console.log("colorpicker initiated");
-						},
-						beforeShow: function() {
-							console.log("before show");
-						},
-						afterShow: function() {
-							console.log("after show");
-						},
-						beforeHide: function() {
-							console.log("before hide");
-						},
-						afterHide: function() {
-							console.log("after hide");
-						},
-						beforeHourSelect: function() {
-							console.log("before hour selected");
-						},
-						afterHourSelect: function() {
-							console.log("after hour selected");
-						},
-						beforeDone: function() {
-							console.log("before done");
-						},
-						afterDone: function() {
-							console.log("after done");
-						}
-				});
+		<pre class="hljs-pre"><code class="html">&lt;input class="form-control" id="single-input" value="" placeholder="Now"&gt;
+&lt;script type="text/javascript"&gt;
+var input = $('.clockpicker-with-callbacks').clockpicker({
+	donetext: 'Done',
+		init: function() { 
+			console.log("colorpicker initiated");
+		},
+		beforeShow: function() {
+			console.log("before show");
+		},
+		afterShow: function() {
+			console.log("after show");
+		},
+		beforeHide: function() {
+			console.log("before hide");
+		},
+		afterHide: function() {
+			console.log("after hide");
+		},
+		beforeHourSelect: function() {
+			console.log("before hour selected");
+		},
+		afterHourSelect: function() {
+			console.log("after hour selected");
+		},
+		afterMinuteSelect: function() {
+			console.log("after minute selected");
+		},
+		afterAmPmSelect: function() {
+			console.log("after AM/PM selected");
+		},
+		beforeDone: function() {
+			console.log("before done");
+		},
+		afterDone: function() {
+			console.log("after done");
+		}
+});
 
-				// Manually toggle to the minutes view
-				$('#check-minutes').click(function(e){
-					// Have to stop propagation here
-					e.stopPropagation();
-					input.clockpicker('show')
-							.clockpicker('toggleView', 'minutes');
-				});
-				&lt;/script&gt;
-			</code>
-		</pre>
+// Manually toggle to the minutes view
+$('#check-minutes').click(function(e){
+	// Have to stop propagation here
+	e.stopPropagation();
+	input.clockpicker('show')
+			.clockpicker('toggleView', 'minutes');
+});
+&lt;/script&gt;</code></pre>
+	</div>
+	<div class="form-group">
+		<h4>Step sizes:</h4>
+		<div class="input-group clockpicker" data-hourstep="2" data-minutestep="10" data-donetext="Done">
+			<input type="text" class="form-control" value="18:00">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>
+		<pre class="hljs-pre"><code class="html">&lt;div class="input-group clockpicker"&gt;
+	&lt;input type="text" class="form-control" value="18:00"&gt;
+	&lt;span class="input-group-addon"&gt;
+		&lt;span class="glyphicon glyphicon-time"&gt;&lt;/span&gt;
+	&lt;/span&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$('.clockpicker').clockpicker({
+	hourstep: 2,
+	minutestep: 5,
+	donetext: 'Done'
+});
+&lt;/script&gt;</code></pre>
+	</div>
+	<div class="form-group">
+		<h4>Twelve hour:</h4>
+		<div class="input-group clockpicker" data-donetext="Done" data-twelvehour="true">
+			<input type="text" class="form-control" value="18:00">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>
+		<pre class="hljs-pre"><code class="html">&lt;div class="input-group clockpicker" data-donetext="Done" data-twelvehour="true"&gt;
+	&lt;input type="text" class="form-control" value="18:00"&gt;
+	&lt;span class="input-group-addon"&gt;
+		&lt;span class="glyphicon glyphicon-time"&gt;&lt;/span&gt;
+	&lt;/span&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$('.clockpicker').clockpicker();
+&lt;/script&gt;</code></pre>
 	</div>
 
 
@@ -283,6 +325,10 @@ $('#single-input').clockpicker({
 	<td>autoclose</td>
 	<td>false</td>
 	<td>auto close when minute is selected</td>
+	</tr>
+	<td>twelvehour</td>
+	<td>false</td>
+	<td>enables twelve hour mode with AM & PM buttons</td>
 	</tr>
 	<tr>
 	<td>vibrate</td>
@@ -327,6 +373,16 @@ $('#single-input').clockpicker({
 		<td>afterHourSelect</td>
 		<td></td>
 		<td>callback function triggered after user makes an hour selection</td>
+	</tr>
+	<tr>
+		<td>afterMinuteSelect</td>
+		<td></td>
+		<td>callback function triggered after user makes a minute selection</td>
+	</tr>
+	<tr>
+		<td>afterAmPmSelect</td>
+		<td></td>
+		<td>callback function triggered after user makes an AM/PM selection</td>
 	</tr>
 	<tr>
 		<td>beforeDone</td>
@@ -405,6 +461,12 @@ $('.clockpicker-with-callbacks').clockpicker({
 		},
 		afterHourSelect: function() {
 			console.log("after hour selected");
+		},
+		afterMinuteSelect: function() {
+			console.log("after minute selected");
+		},
+		afterAmPmSelect: function() {
+			console.log("after AM/PM selected");
 		},
 		beforeDone: function() {
 			console.log("before done");
