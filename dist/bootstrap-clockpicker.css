@@ -3,9 +3,11 @@
  * Copyright 2014 Wang Shenwei.
  * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
  */
-
 .clockpicker .input-group-addon {
 	cursor: pointer;
+}
+.clockpicker input:disabled + .input-group-addon {
+	cursor: not-allowed;
 }
 .clockpicker-moving {
 	cursor: move;
