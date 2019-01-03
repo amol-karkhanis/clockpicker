@@ -159,7 +159,7 @@
 
 		// Show or toggle
 		input.on('focus.clockpicker click.clockpicker', $.proxy(this.show, this));
-		addon.on('click.clockpicker',  $.proxy(function() { !this.input.prop('disabled') && this.toggle() }, this));
+		addon.on('click.clockpicker',  $.proxy(function() { !this.input.is(':disabled') && this.toggle() }, this));
 
 		// Build ticks
 		var tickTpl = $('<div class="clockpicker-tick"></div>'),

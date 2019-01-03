@@ -109,10 +109,11 @@ test('clockpicker on input-group', function(){
 });
 
 test('clockpicker on input-group with addon', function(){
-    var group = $('<div class="input-group" data-default="20:48"><input /><span class="input-group-addon">addon</span></div>')
+    var fieldset = $('<fieldset><div class="input-group" data-default="20:48"><input /><span class="input-group-addon">addon</span></div></fieldset>')
                 .appendTo('#qunit-fixture');
-    var input = group.find('input');
-    var addon = group.find('.input-group-addon');
+    var group = fieldset.find('.input-group');
+    var input = fieldset.find('input');
+    var addon = fieldset.find('.input-group-addon');
 
     group.clockpicker();
     var picker = group.data('clockpicker');
@@ -129,6 +130,15 @@ test('clockpicker on input-group with addon', function(){
 
     addon.click();
     ok(! picker.isShown, 'clockpicker is hidden by click on addon again');
+
+    input.attr('disabled', true);
+    addon.click();
+    ok(! picker.isShown, 'clockpicker is not shown by click on input disabled addon');
+
+    input.attr('disabled', false);
+    fieldset.attr('disabled', true);
+    addon.click();
+    ok(! picker.isShown, 'clockpicker is not shown by click on fieldset disabled addon');
 });
 
 test('clockpicker manual operations', function(){
