@@ -140,7 +140,7 @@
 				
 		}
 		
-		if (! options.autoclose) {
+		if (options.autoclose === false || options.autoclose === 'semi') {
 			// If autoclose is not setted, append a button
 			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.donetext + '</button>')
 				.click($.proxy(this.done, this))
@@ -278,7 +278,7 @@
 				if (self.currentView === 'hours') {
 					self.toggleView('minutes', duration / 2);
 				} else {
-					if (options.autoclose) {
+					if (options.autoclose === true || options.autoclose === 'semi') {
 						self.minutesView.addClass('clockpicker-dial-out');
 						setTimeout(function(){
 							self.done();
@@ -347,7 +347,7 @@
 		fromnow: 0,          // set default time to * milliseconds from now (using with default = 'now')
 		placement: 'bottom', // clock popover placement
 		align: 'left',       // popover arrow align
-		donetext: '完成',    // done button text
+		donetext: 'Done',    // done button text
 		autoclose: false,    // auto close when minute is selected
 		twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true,       // vibrate the device when dragging clock hand
@@ -688,7 +688,7 @@
 			}
 		}
 
-		if (this.options.autoclose) {
+		if (this.options.autoclose === true || this.options.autoclose === 'semi') {
 			this.input.trigger('blur');
 		}
 
