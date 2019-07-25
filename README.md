@@ -139,6 +139,12 @@ gulp
 
 ## Change log
 
+0.0.8
+
+* Allow time steps for minutes and hours
+* Don't show clockpicker on disabled input-group-addon click
+* Add ability to show done button with auto close.
+
 0.0.7
 
 * Enables twelve hour mode with AM & PM buttons.
