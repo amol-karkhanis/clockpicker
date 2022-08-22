@@ -140,6 +140,12 @@
 				
 		}
 		
+		if (options.clearbutton === true) {
+			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.cleartext + '</button>')
+				.click($.proxy(this.clear, this))
+				.appendTo(popover);
+		}
+		
 		if (options.autoclose === false || options.autoclose === 'semi') {
 			// If autoclose is not setted, append a button
 			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.donetext + '</button>')
@@ -348,7 +354,9 @@
 		placement: 'bottom', // clock popover placement
 		align: 'left',       // popover arrow align
 		donetext: 'Done',    // done button text
+		cleartext: 'Clear',  // clear button text
 		autoclose: false,    // auto close when minute is selected
+		clearbutton: false,  // add a clear button
 		twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true,       // vibrate the device when dragging clock hand
 		hourstep: 1,         // allow to multi increment the hour
@@ -693,6 +701,26 @@
 		}
 
 		this.raiseCallback(this.options.afterDone);
+	};
+	
+	ClockPicker.prototype.clear = function() {
+		this.raiseCallback(this.options.beforeClear);
+		this.hide();
+
+		var last = this.input.prop('value'),		
+			value = '';
+			
+		this.input.prop('value', value);
+		if (value !== last) {
+			this.input.triggerHandler('change');
+			if (! this.isInput) {
+				this.element.trigger('change');
+			}
+		}
+
+		this.input.trigger('blur');
+
+		this.raiseCallback(this.options.afterClear);
 	};
 
 	// Remove clockpicker from input

@@ -186,7 +186,7 @@ $('#check-minutes').click(function(e){
 	<div class="form-group">
 		<h4>Callbacks:</h4>
 		<div class="clearfix">
-			<div class="input-group clockpicker-with-callbacks">
+			<div class="input-group clockpicker-with-callbacks" data-clearbutton="true">
 				<input type="text" class="form-control" value="10:10">
 				<span class="input-group-addon">
 					<span class="glyphicon glyphicon-time"></span>
@@ -229,6 +229,12 @@ var input = $('.clockpicker-with-callbacks').clockpicker({
 		},
 		afterDone: function() {
 			console.log("after done");
+		},
+		beforeClear: function() {
+			console.log("before clear");
+		},
+		afterClear: function() {
+			console.log("after clear");
 		}
 });
 
@@ -500,6 +506,12 @@ $('.clockpicker-with-callbacks').clockpicker({
 		},
 		afterDone: function() {
 			console.log("after done");
+		},
+		beforeClear: function() {
+			console.log("before clear");
+		},
+		afterClear: function() {
+			console.log("after clear");
 		}
 	})
 	.find('input').change(function(){
