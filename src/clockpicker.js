@@ -357,10 +357,10 @@
 		cleartext: 'Clear',  // clear button text
 		autoclose: false,    // auto close when minute is selected
 		clearbutton: false,  // add a clear button
-		twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
+		twelvehour: true, // change to 12 hour AM/PM clock from 24 hour
 		vibrate: true,       // vibrate the device when dragging clock hand
 		hourstep: 1,         // allow to multi increment the hour
-		minutestep: 1        // allow to multi increment the minute
+		minutestep: 5        // allow to multi increment the minute
 	};
 
 	ClockPicker.prototype.raiseCallback = function(callbackFunction) {
@@ -747,7 +747,7 @@
 				var options = $.extend({}, ClockPicker.DEFAULTS, $this.data(), typeof option == 'object' && option);
 				$this.data('clockpicker', new ClockPicker($this, options));
 			} else {
-				// Manual operatsions. show, hide, remove, e.g.
+				// Manual operations. show, hide, remove, e.g.
 				if (typeof data[option] === 'function') {
 					data[option].apply(data, args);
 				}
